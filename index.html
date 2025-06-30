@@ -27,57 +27,97 @@
             width: 100%;
             height: 100%;
             display: none;
-            padding: 60px;
+            padding: 40px 60px;
             position: absolute;
             top: 0;
             left: 0;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            overflow-y: auto;
         }
 
         .slide.active {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
+            min-height: 100vh;
+        }
+        
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 20px 0;
         }
 
         .slide h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             color: #2c3e50;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .slide h2 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #34495e;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .slide h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%);
+            border-radius: 2px;
         }
 
         .slide h3 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #3498db;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 600;
+            line-height: 1.4;
         }
 
         .slide p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #555;
             line-height: 1.8;
             margin-bottom: 20px;
             max-width: 900px;
+            text-align: center;
+            font-weight: 400;
         }
 
         .subtitle {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #7f8c8d;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.9;
         }
 
         .logo-container {
@@ -106,41 +146,83 @@
         }
 
         .agenda-item {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #2c3e50;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
+            margin-bottom: 20px;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             border-left: 5px solid #3498db;
-            border-radius: 5px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .agenda-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .agenda-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left-color: #9b59b6;
         }
 
         .revolution-container {
-            display: flex;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             width: 100%;
             max-width: 1200px;
-            margin-top: 40px;
+            margin-top: 35px;
         }
 
         .revolution-box {
-            flex: 1;
-            margin: 0 20px;
-            padding: 30px;
+            padding: 35px 25px;
             background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
             color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .revolution-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .revolution-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
         .revolution-box h4 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
         }
 
         .revolution-box p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #f1f2f6;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .intersection {
@@ -148,14 +230,38 @@
         }
 
         .quote {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-style: italic;
-            color: #e74c3c;
-            margin: 40px 0;
-            padding: 30px;
-            background: #ffeaa7;
-            border-radius: 10px;
-            border-left: 5px solid #fdcb6e;
+            color: #2c3e50;
+            margin: 35px 0;
+            padding: 35px 40px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 20px;
+            border-left: 6px solid #e17055;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+        
+        .quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(44, 62, 80, 0.2);
+            font-family: serif;
+        }
+        
+        .quote::after {
+            content: '"';
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 4rem;
+            color: rgba(44, 62, 80, 0.2);
+            font-family: serif;
         }
 
         .evolution-container {
@@ -318,6 +424,14 @@
             text-align: center;
             font-size: 1.3rem;
             line-height: 1.4;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(162, 155, 254, 0.3);
         }
 
         .field small {
@@ -325,6 +439,322 @@
             opacity: 0.9;
             display: block;
             margin-top: 8px;
+        }
+
+        .rwa-animate {
+            animation: rwaFloat 3s ease-in-out infinite;
+        }
+
+        .rwa-animate:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+
+        .rwa-animate:nth-child(3n) {
+            animation-delay: 1s;
+        }
+
+        .rwa-trend {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .rwa-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-item h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-item small {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes rwaFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 基础设施RWA样式 */
+        .rwa-infrastructure-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .infra-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .infra-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+        
+        .infra-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .infra-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        .infra-card h4 {
+            margin: 0 0 20px 0;
+            font-size: 1.3em;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .infra-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .stat-value {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        
+        .infra-progress {
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #4ecdc4, #44a08d);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .progress-text {
+            font-size: 0.85em;
+            margin-top: 8px;
+            display: block;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .rwa-highlight-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        }
+        
+        .rwa-highlight-box h3 {
+            margin: 0 0 25px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .highlight-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .highlight-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .highlight-number {
+            display: block;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+        
+        .highlight-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        /* 知识产权RWA样式 */
+        .ip-rwa-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .ip-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .ip-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+        
+        .ip-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .ip-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .ip-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        
+        .ip-projects {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .ip-project {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ip-project:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        
+        .project-name {
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+        
+        .project-value {
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .project-yield {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        
+        .ip-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        }
+        
+        .summary-stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .summary-number {
+            display: block;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+        
+        .summary-label {
+            font-size: 0.9em;
+            opacity: 0.9;
         }
 
         .services {
@@ -399,18 +829,71 @@
 
         @media (max-width: 768px) {
             .slide {
-                padding: 30px 20px;
+                padding: 20px 15px;
+            }
+            
+            .slide-content {
+                padding: 15px 0;
+                min-height: calc(100vh - 60px);
             }
             
             .slide h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+                line-height: 1.2;
             }
             
             .slide h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                margin-bottom: 25px;
             }
             
-            .revolution-container,
+            .slide h3 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .slide p {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 25px;
+            }
+            
+            .quote {
+                font-size: 1.4rem;
+                padding: 25px 20px;
+                margin: 25px 0;
+            }
+            
+            .agenda-item {
+                font-size: 1.2rem;
+                padding: 20px 25px;
+                margin-bottom: 15px;
+            }
+            
+            .revolution-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 25px;
+            }
+            
+            .revolution-box {
+                padding: 25px 20px;
+            }
+            
+            .revolution-box h4 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .revolution-box p {
+                font-size: 1rem;
+            }
+            
             .capabilities,
             .applications,
             .blockchain-features,
@@ -418,10 +901,94 @@
             .rwa-fields,
             .services {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .comparison {
                 flex-direction: column;
+                gap: 20px;
+            }
+            
+            .before, .after {
+                margin: 0;
+            }
+            
+            /* 基础设施RWA移动端样式 */
+            .rwa-infrastructure-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .infra-card {
+                padding: 20px;
+            }
+            
+            .infra-icon {
+                font-size: 2.5em;
+            }
+            
+            .infra-card h4 {
+                font-size: 1.1em;
+            }
+            
+            .highlight-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .highlight-number {
+                font-size: 1.8em;
+            }
+            
+            .rwa-highlight-box {
+                padding: 20px;
+            }
+            
+            .rwa-highlight-box h3 {
+                font-size: 1.3em;
+            }
+            
+            /* 知识产权RWA移动端样式 */
+            .ip-rwa-matrix {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .ip-category {
+                padding: 20px;
+            }
+            
+            .ip-icon {
+                font-size: 2em;
+                margin-right: 10px;
+            }
+            
+            .ip-header h3 {
+                font-size: 1.2em;
+            }
+            
+            .ip-project {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                text-align: center;
+            }
+            
+            .project-name {
+                font-size: 0.9em;
+            }
+            
+            .project-value {
+                font-size: 1em;
+            }
+            
+            .ip-summary {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .summary-number {
+                font-size: 1.8em;
             }
         }
     </style>
@@ -430,342 +997,533 @@
     <div class="presentation">
         <!-- Slide 1: 主标题页 -->
         <div class="slide active">
-            <h1>价值的重塑：AI与区块链如何融合，驱动实体经济的未来</h1>
-            <p class="subtitle">Metakina.com 创始人 张强伟 | 受香港区块链协会邀请</p>
-            <p class="subtitle">面向：广西交通运输廳研修班</p>
-            <div class="logo-container">
-                <div class="logo">Metakina Logo</div>
-                <div class="logo">HKBA Logo</div>
-                <div class="logo">香港金融管理学院 Logo</div>
+            <div class="slide-content">
+                <h1>价值的重塑：AI与区块链如何融合，驱动实体经济的未来</h1>
+                <p class="subtitle">Metakina.com 创始人 张强伟 | 受香港区块链协会邀请</p>
+                <p class="subtitle">面向：广西交通运输廳研修班</p>
+                <div class="logo-container">
+                    <div class="logo">Metakina Logo</div>
+                    <div class="logo">HKBA Logo</div>
+                    <div class="logo">香港金融管理学院 Logo</div>
+                </div>
             </div>
         </div>
 
         <!-- Slide 2: 议程与路线图 -->
         <div class="slide">
-            <h2>今日议程：一场通往价值未来的思想之旅</h2>
-            <div class="agenda-list">
-                <div class="agenda-item">解码基石之一：AI - 从哲学到工具，理解"超级大脑"</div>
-                <div class="agenda-item">解码基石之二：区块链 - 洞察"信任机器"的本质</div>
-                <div class="agenda-item">世纪融合：RWA的诞生 - 当AI遇上区块链</div>
-                <div class="agenda-item">价值释放：RWA的应用宇宙 - 案例与想象</div>
-                <div class="agenda-item">未来之路：携手Metakina - 共创数字经济新篇章</div>
+            <div class="slide-content">
+                <h2>今日议程：一场通往价值未来的思想之旅</h2>
+                <div class="agenda-list">
+                    <div class="agenda-item">解码基石之一：AI - 从哲学到工具，理解"超级大脑"</div>
+                    <div class="agenda-item">解码基石之二：区块链 - 洞察"信任机器"的本质</div>
+                    <div class="agenda-item">世纪融合：RWA的诞生 - 当AI遇上区块链</div>
+                    <div class="agenda-item">价值释放：RWA的应用宇宙 - 案例与想象</div>
+                    <div class="agenda-item">未来之路：携手Metakina - 共创数字经济新篇章</div>
+                </div>
             </div>
         </div>
 
         <!-- Slide 3: 时代背景 -->
         <div class="slide">
-            <h2>我们正处在一个伟大的交汇点</h2>
-            <div class="revolution-container">
-                <div class="revolution-box">
-                    <h4>AI革命 (生产力)</h4>
-                    <p>核心是"效率"与"智能"</p>
-                    <p>关键词：AlphaGo, ChatGPT</p>
-                </div>
-                <div class="revolution-box">
-                    <h4>区块链革命 (生产关系)</h4>
-                    <p>核心是"信任"与"协作"</p>
-                    <p>关键词：比特币, 智能合约</p>
-                </div>
-                <div class="revolution-box intersection">
-                    <h4>交汇处 (价值互联网)</h4>
-                    <p>核心是"可信的智能资产"</p>
+            <div class="slide-content">
+                <h2>我们正处在一个伟大的交汇点</h2>
+                <div class="revolution-container">
+                    <div class="revolution-box">
+                        <h4>AI革命 (生产力)</h4>
+                        <p>核心是"效率"与"智能"</p>
+                        <p>关键词：AlphaGo, ChatGPT</p>
+                    </div>
+                    <div class="revolution-box">
+                        <h4>区块链革命 (生产关系)</h4>
+                        <p>核心是"信任"与"协作"</p>
+                        <p>关键词：比特币, 智能合约</p>
+                    </div>
+                    <div class="revolution-box intersection">
+                        <h4>交汇处 (价值互联网)</h4>
+                        <p>核心是"可信的智能资产"</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 4: AI的哲学之根 -->
         <div class="slide">
-            <h2>人工智能的哲学之根：我们如何描述世界？</h2>
-            <div class="quote">
-                "我语言的极限，就是我世界的极限。"<br>
-                —— 路德维希·维特根斯坦
-            </div>
-            <div class="applications">
-                <div class="application">
-                    <h4>🔥 行业热点</h4>
-                    <p>ChatGPT-4突破万亿参数，多模态AI成为新趋势</p>
+            <div class="slide-content">
+                <h2>人工智能的哲学之根：我们如何描述世界？</h2>
+                <div class="quote">
+                    "我语言的极限，就是我世界的极限。"<br>
+                    —— 路德维希·维特根斯坦
                 </div>
-                <div class="application">
-                    <h4>🚀 Metakina案例</h4>
-                    <p>AI驱动的资产估值模型，准确率提升40%</p>
+                <div class="applications">
+                    <div class="application">
+                        <h4>🔥 行业热点</h4>
+                        <p>ChatGPT-4突破万亿参数，多模态AI成为新趋势</p>
+                    </div>
+                    <div class="application">
+                        <h4>🚀 Metakina案例</h4>
+                        <p>AI驱动的资产估值模型，准确率提升40%</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 5: 工具的演进 -->
         <div class="slide">
-            <h2>思想的延伸：从"辅助设计"到"伙伴创造"</h2>
-            <div class="evolution-container">
-                <div class="evolution-step">
-                    <h4>计算机</h4>
-                    <p>完美的逻辑语言（代码）</p>
-                </div>
-                <div class="evolution-step">
-                    <h4>CAD (计算机辅助设计)</h4>
-                    <p>高级的空间语言，自动化"画图"，解放"设计"</p>
-                </div>
-                <div class="evolution-step">
-                    <h4>AI (人工智能)</h4>
-                    <p>领悟意图的"伙伴"，从执行指令到主动生成</p>
+            <div class="slide-content">
+                <h2>思想的延伸：从"辅助设计"到"伙伴创造"</h2>
+                <div class="evolution-container">
+                    <div class="evolution-step">
+                        <h4>计算机</h4>
+                        <p>完美的逻辑语言（代码）</p>
+                    </div>
+                    <div class="evolution-step">
+                        <h4>CAD (计算机辅助设计)</h4>
+                        <p>高级的空间语言，自动化"画图"，解放"设计"</p>
+                    </div>
+                    <div class="evolution-step">
+                        <h4>AI (人工智能)</h4>
+                        <p>领悟意图的"伙伴"，从执行指令到主动生成</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 6: AI的核心三原力 -->
         <div class="slide">
-            <h2>AI的核心能力：预测、决策与生成</h2>
-            <div class="capabilities">
-                <div class="capability">
-                    <h4>预测 (Predict)</h4>
-                    <p>基于海量数据，发现规律，预见未来</p>
-                </div>
-                <div class="capability">
-                    <h4>决策 (Decide)</h4>
-                    <p>在亿万种可能中，寻找最优解</p>
-                </div>
-                <div class="capability">
-                    <h4>生成 (Generate)</h4>
-                    <p>理解意图，创造全新的、逻辑自洽的内容</p>
+            <div class="slide-content">
+                <h2>AI的核心能力：预测、决策与生成</h2>
+                <div class="capabilities">
+                    <div class="capability">
+                        <h4>预测 (Predict)</h4>
+                        <p>基于海量数据，发现规律，预见未来</p>
+                    </div>
+                    <div class="capability">
+                        <h4>决策 (Decide)</h4>
+                        <p>在亿万种可能中，寻找最优解</p>
+                    </div>
+                    <div class="capability">
+                        <h4>生成 (Generate)</h4>
+                        <p>理解意图，创造全新的、逻辑自洽的内容</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 7: AI的应用浪潮 -->
         <div class="slide">
-            <h2>AI已来：各行各业的智能化变革</h2>
-            <div class="applications">
-                <div class="application">
-                    <h4>医药研发 🔥</h4>
-                    <p>AlphaFold3预测蛋白质结构，新药研发周期缩短50%</p>
-                </div>
-                <div class="application">
-                    <h4>金融服务 💰</h4>
-                    <p>摩根大通AI交易系统日处理5000亿美元</p>
-                </div>
-                <div class="application">
-                    <h4>智能制造 🏭</h4>
-                    <p>特斯拉AI工厂，生产效率提升300%</p>
-                </div>
-                <div class="application">
-                    <h4>Metakina实践 🚀</h4>
-                    <p>AI智能合约审计，风险识别准确率99.7%</p>
+            <div class="slide-content">
+                <h2>AI已来：各行各业的智能化变革</h2>
+                <div class="applications">
+                    <div class="application">
+                        <h4>医药研发 🔥</h4>
+                        <p>AlphaFold3预测蛋白质结构，新药研发周期缩短50%</p>
+                    </div>
+                    <div class="application">
+                        <h4>金融服务 💰</h4>
+                        <p>摩根大通AI交易系统日处理5000亿美元</p>
+                    </div>
+                    <div class="application">
+                        <h4>智能制造 🏭</h4>
+                        <p>特斯拉AI工厂，生产效率提升300%</p>
+                    </div>
+                    <div class="application">
+                        <h4>Metakina实践 🚀</h4>
+                        <p>AI智能合约审计，风险识别准确率99.7%</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 8: 区块链的本质 -->
         <div class="slide">
-            <h2>区块链：一部不可篡改的全球"信任机器"</h2>
-            <h3>核心比喻：全世界共同记一本账</h3>
-            <div class="blockchain-features">
-                <div class="feature">
-                    <h4>去中心 🌐</h4>
-                    <p>比特币网络15年零宕机记录</p>
+            <div class="slide-content">
+                <h2>区块链：一部不可篡改的全球"信任机器"</h2>
+                <h3>核心比喻：全世界共同记一本账</h3>
+                <div class="blockchain-features">
+                    <div class="feature">
+                        <h4>去中心 🌐</h4>
+                        <p>比特币网络15年零宕机记录</p>
+                    </div>
+                    <div class="feature">
+                        <h4>不可篡改 🔒</h4>
+                        <p>以太坊2000万个区块从未被篡改</p>
+                    </div>
+                    <div class="feature">
+                        <h4>透明可追溯 👁️</h4>
+                        <p>每日处理150万笔交易，全程可查</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h4>不可篡改 🔒</h4>
-                    <p>以太坊2000万个区块从未被篡改</p>
-                </div>
-                <div class="feature">
-                    <h4>透明可追溯 👁️</h4>
-                    <p>每日处理150万笔交易，全程可查</p>
-                </div>
+                <p style="margin-top: 30px; color: #e74c3c; font-size: 1.2rem;">🚀 Metakina: 基于Polygon构建，交易成本降低99%</p>
             </div>
-            <p style="margin-top: 30px; color: #e74c3c; font-size: 1.2rem;">🚀 Metakina: 基于Polygon构建，交易成本降低99%</p>
         </div>
 
         <!-- Slide 9: 智能合约的魔力 -->
         <div class="slide">
-            <h2>智能合约：当代码成为法律</h2>
-            <h3>定义：自动执行的程序化协议</h3>
-            <p>工作原理："如果 A 发生，那么 B 自动执行"</p>
-            <p>案例：自动售货机</p>
+            <div class="slide-content">
+                <h2>智能合约：当代码成为法律</h2>
+                <h3>定义：自动执行的程序化协议</h3>
+                <p>工作原理："如果 A 发生，那么 B 自动执行"</p>
+                <p>案例：自动售货机</p>
+            </div>
         </div>
 
         <!-- Slide 10: 信任的基石 -->
         <div class="slide">
-            <h2>我们为何能信任一台"机器"？</h2>
-            <div class="blockchain-features">
-                <div class="feature">
-                    <h4>密码学 🔐</h4>
-                    <p>SHA-256算法，破解需要宇宙年龄的10^23倍时间</p>
+            <div class="slide-content">
+                <h2>我们为何能信任一台"机器"？</h2>
+                <div class="blockchain-features">
+                    <div class="feature">
+                        <h4>密码学 🔐</h4>
+                        <p>SHA-256算法，破解需要宇宙年龄的10^23倍时间</p>
+                    </div>
+                    <div class="feature">
+                        <h4>共识机制 ⚖️</h4>
+                        <p>全球15万个节点共同验证，作弊成本超过收益</p>
+                    </div>
+                    <div class="feature">
+                        <h4>分布式存储 🌍</h4>
+                        <p>数据分布在全球，单点故障影响<0.01%</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h4>共识机制 ⚖️</h4>
-                    <p>全球15万个节点共同验证，作弊成本超过收益</p>
-                </div>
-                <div class="feature">
-                    <h4>分布式存储 🌍</h4>
-                    <p>数据分布在全球，单点故障影响<0.01%</p>
-                </div>
-            </div>
-            <div class="applications" style="margin-top: 30px;">
-                <div class="application">
-                    <h4>🔥 行业热点</h4>
-                    <p>香港政府推出数字港币试点，区块链基础设施成熟</p>
-                </div>
-                <div class="application">
-                    <h4>🚀 Metakina优势</h4>
-                    <p>多链兼容架构，支持以太坊、BSC、Polygon等主流链</p>
+                <div class="applications" style="margin-top: 30px;">
+                    <div class="application">
+                        <h4>🔥 行业热点</h4>
+                        <p>香港政府推出数字港币试点，区块链基础设施成熟</p>
+                    </div>
+                    <div class="application">
+                        <h4>🚀 Metakina优势</h4>
+                        <p>多链兼容架构，支持以太坊、BSC、Polygon等主流链</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 11: 聚变反应 -->
         <div class="slide">
-            <h2>世纪融合：当"超级大脑"遇上"信任机器"</h2>
-            <div class="formula">
-                智能 (AI) + 信任 (Blockchain) = 可信的智能资产 (RWA)
+            <div class="slide-content">
+                <h2>世纪融合：当"超级大脑"遇上"信任机器"</h2>
+                <div class="formula">
+                    智能 (AI) + 信任 (Blockchain) = 可信的智能资产 (RWA)
+                </div>
+                <p>分工：AI负责价值发现，区块链负责价值锚定</p>
             </div>
-            <p>分工：AI负责价值发现，区块链负责价值锚定</p>
         </div>
 
         <!-- Slide 12: RWA全景案例 -->
         <div class="slide">
-            <h2>案例解析：香港中环写字楼RWA项目</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <h4>步骤1: AI价值发现 🤖</h4>
-                    <p>资产价值：8.5亿港币<br>年化收益率：6.8%</p>
+            <div class="slide-content">
+                <h2>案例解析：香港中环写字楼RWA项目</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <h4>步骤1: AI价值发现 🤖</h4>
+                        <p>资产价值：8.5亿港币<br>年化收益率：6.8%</p>
+                    </div>
+                    <div class="step">
+                        <h4>步骤2: 法律封装 📋</h4>
+                        <p>SPV结构设立<br>符合香港SFC监管</p>
+                    </div>
+                    <div class="step">
+                        <h4>步骤3: 代币化发行 💎</h4>
+                        <p>发行850万枚代币<br>每枚对应100港币资产</p>
+                    </div>
+                    <div class="step">
+                        <h4>步骤4: 智能管理 ⚡</h4>
+                        <p>自动分红系统<br>月度收益自动分配</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <h4>步骤2: 法律封装 📋</h4>
-                    <p>SPV结构设立<br>符合香港SFC监管</p>
-                </div>
-                <div class="step">
-                    <h4>步骤3: 代币化发行 💎</h4>
-                    <p>发行850万枚代币<br>每枚对应100港币资产</p>
-                </div>
-                <div class="step">
-                    <h4>步骤4: 智能管理 ⚡</h4>
-                    <p>自动分红系统<br>月度收益自动分配</p>
-                </div>
+                <p style="margin-top: 30px; color: #e74c3c; font-size: 1.2rem;">🚀 Metakina成果：24小时内完成认购，投资门槛从1000万降至1000港币</p>
             </div>
-            <p style="margin-top: 30px; color: #e74c3c; font-size: 1.2rem;">🚀 Metakina成果：24小时内完成认购，投资门槛从1000万降至1000港币</p>
         </div>
 
         <!-- Slide 13: 步骤 1 & 2 -->
         <div class="slide">
-            <h2>第一步：AI价值发现 & 第二步：法律结构封装</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <h4>AI价值发现</h4>
-                    <p>产出科学的资产估值与现金流预测报告</p>
-                </div>
-                <div class="step">
-                    <h4>法律结构封装 (SPV)</h4>
-                    <p>实现破产隔离，保护投资者利益</p>
+            <div class="slide-content">
+                <h2>第一步：AI价值发现 & 第二步：法律结构封装</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <h4>AI价值发现</h4>
+                        <p>产出科学的资产估值与现金流预测报告</p>
+                    </div>
+                    <div class="step">
+                        <h4>法律结构封装 (SPV)</h4>
+                        <p>实现破产隔离，保护投资者利益</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 14: 步骤 3 & 4 -->
         <div class="slide">
-            <h2>第三步：区块链价值锚定 & 第四步：智能化价值管理</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <h4>区块链价值锚定 (代币化)</h4>
-                    <p>创造不可篡改的<strong>"数字房产证"</strong></p>
-                </div>
-                <div class="step">
-                    <h4>智能化价值管理 (AI + 智能合约)</h4>
-                    <p>实现AI风控与自动分红</p>
+            <div class="slide-content">
+                <h2>第三步：区块链价值锚定 & 第四步：智能化价值管理</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <h4>区块链价值锚定 (代币化)</h4>
+                        <p>创造不可篡改的<strong>"数字房产证"</strong></p>
+                    </div>
+                    <div class="step">
+                        <h4>智能化价值管理 (AI + 智能合约)</h4>
+                        <p>实现AI风控与自动分红</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 15: 结果 -->
         <div class="slide">
-            <h2>革命性的转变：从不动产到可流动的价值</h2>
-            <div class="comparison">
-                <div class="before">
-                    <h4>转变前</h4>
-                    <p>高门槛</p>
-                    <p>低流动性</p>
-                    <p>交易复杂</p>
-                </div>
-                <div class="after">
-                    <h4>转变后 (RWA)</h4>
-                    <p>投资民主化</p>
-                    <p>全球流动性</p>
-                    <p>高效透明</p>
+            <div class="slide-content">
+                <h2>革命性的转变：从不动产到可流动的价值</h2>
+                <div class="comparison">
+                    <div class="before">
+                        <h4>转变前</h4>
+                        <p>高门槛</p>
+                        <p>低流动性</p>
+                        <p>交易复杂</p>
+                    </div>
+                    <div class="after">
+                        <h4>转变后 (RWA)</h4>
+                        <p>投资民主化</p>
+                        <p>全球流动性</p>
+                        <p>高效透明</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 16: RWA的应用宇宙 -->
         <div class="slide">
-            <h2>万物皆可为价值：RWA的广阔应用领域</h2>
-            <div class="rwa-fields">
-                <div class="field">🏢 房地产<br><small>全球市场：280万亿美元</small></div>
-                <div class="field">💼 私募股权<br><small>年增长率：15%</small></div>
-                <div class="field">🛣️ 基础设施<br><small>中国投资：17万亿人民币</small></div>
-                <div class="field">🎵 知识产权<br><small>音乐版权：年收益260亿美元</small></div>
-                <div class="field">🌿 自然资源<br><small>碳信用市场：1万亿美元</small></div>
-                <div class="field">🎨 收藏品<br><small>艺术品市场：650亿美元</small></div>
-            </div>
-            <div class="applications" style="margin-top: 30px;">
-                <div class="application">
-                    <h4>🔥 市场热点</h4>
-                    <p>BlackRock推出BUIDL基金，管理资产超5亿美元</p>
+            <div class="slide-content">
+                <h2>万物皆可为价值：RWA的多元化生态系统</h2>
+                <div class="rwa-fields">
+                    <div class="field rwa-animate">🏢 房地产<br><small>全球市场：280万亿美元</small><br><span class="rwa-trend">📈 +12% YoY</span></div>
+                    <div class="field rwa-animate">💼 私募股权<br><small>年增长率：15%</small><br><span class="rwa-trend">🚀 新兴热点</span></div>
+                    <div class="field rwa-animate">🛣️ 基础设施<br><small>中国投资：17万亿人民币</small><br><span class="rwa-trend">🏗️ 政策支持</span></div>
+                    <div class="field rwa-animate">🎵 知识产权<br><small>音乐版权：年收益260亿美元</small><br><span class="rwa-trend">🎤 创作者经济</span></div>
+                    <div class="field rwa-animate">🌿 自然资源<br><small>碳信用市场：1万亿美元</small><br><span class="rwa-trend">🌱 ESG投资</span></div>
+                    <div class="field rwa-animate">🎨 收藏品<br><small>艺术品市场：650亿美元</small><br><span class="rwa-trend">💎 数字化浪潮</span></div>
+                    <div class="field rwa-animate">⚡ 新能源<br><small>太阳能电站：5000亿美元</small><br><span class="rwa-trend">🔋 绿色金融</span></div>
+                    <div class="field rwa-animate">🚗 交通工具<br><small>车队资产：2万亿美元</small><br><span class="rwa-trend">🚙 共享经济</span></div>
+                    <div class="field rwa-animate">🏥 医疗设备<br><small>全球市场：4500亿美元</small><br><span class="rwa-trend">🩺 健康科技</span></div>
                 </div>
-                <div class="application">
-                    <h4>🚀 Metakina布局</h4>
-                    <p>已完成12个RWA项目，总价值超30亿港币</p>
+                <div class="rwa-stats">
+                    <div class="stat-item">
+                        <h3>📊 市场规模</h3>
+                        <p class="big-number">$68万亿</p>
+                        <small>全球可代币化资产</small>
+                    </div>
+                    <div class="stat-item">
+                        <h3>🚀 增长率</h3>
+                        <p class="big-number">+340%</p>
+                        <small>2024年RWA市场增长</small>
+                    </div>
+                    <div class="stat-item">
+                        <h3>🌍 覆盖地区</h3>
+                        <p class="big-number">50+</p>
+                        <small>国家和地区</small>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 17: 案例深潜：基础设施RWA -->
         <div class="slide">
-            <h2>案例深潜：粤港澳大湾区高速公路收费权RWA</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <h4>项目概况 📊</h4>
-                    <p>• 深圳-珠海高速公路<br>• 25年收费权<br>• 预期总收益：120亿人民币</p>
+            <h2>基础设施RWA：重塑万亿级资产配置新格局</h2>
+            <div class="rwa-infrastructure-grid">
+                <div class="infra-card">
+                    <div class="infra-icon">🛣️</div>
+                    <h4>高速公路收费权</h4>
+                    <div class="infra-stats">
+                        <span class="stat-label">项目价值</span>
+                        <span class="stat-value">120亿元</span>
+                    </div>
+                    <div class="infra-stats">
+                        <span class="stat-label">年化收益</span>
+                        <span class="stat-value">8.5%</span>
+                    </div>
+                    <div class="infra-progress">
+                        <div class="progress-bar" style="width: 85%;"></div>
+                        <span class="progress-text">融资进度 85%</span>
+                    </div>
                 </div>
-                <div class="step">
-                    <h4>创新模式 💡</h4>
-                    <p>• AI预测车流量<br>• 智能合约自动分红<br>• 投资门槛：1万元起</p>
+                <div class="infra-card">
+                    <div class="infra-icon">🌉</div>
+                    <h4>港珠澳大桥通行权</h4>
+                    <div class="infra-stats">
+                        <span class="stat-label">项目价值</span>
+                        <span class="stat-value">200亿元</span>
+                    </div>
+                    <div class="infra-stats">
+                        <span class="stat-label">年化收益</span>
+                        <span class="stat-value">7.2%</span>
+                    </div>
+                    <div class="infra-progress">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                        <span class="progress-text">筹备中 60%</span>
+                    </div>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">⚡</div>
+                    <h4>智能电网收益权</h4>
+                    <div class="infra-stats">
+                        <span class="stat-label">项目价值</span>
+                        <span class="stat-value">80亿元</span>
+                    </div>
+                    <div class="infra-stats">
+                        <span class="stat-label">年化收益</span>
+                        <span class="stat-value">9.1%</span>
+                    </div>
+                    <div class="infra-progress">
+                        <div class="progress-bar" style="width: 95%;"></div>
+                        <span class="progress-text">即将上线 95%</span>
+                    </div>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon">🚇</div>
+                    <h4>地铁站商业权益</h4>
+                    <div class="infra-stats">
+                        <span class="stat-label">项目价值</span>
+                        <span class="stat-value">150亿元</span>
+                    </div>
+                    <div class="infra-stats">
+                        <span class="stat-label">年化收益</span>
+                        <span class="stat-value">6.8%</span>
+                    </div>
+                    <div class="infra-progress">
+                        <div class="progress-bar" style="width: 40%;"></div>
+                        <span class="progress-text">规划阶段 40%</span>
+                    </div>
                 </div>
             </div>
-            <div class="applications" style="margin-top: 30px;">
-                <div class="application">
-                    <h4>🔥 政策支持</h4>
-                    <p>国家发改委支持基础设施REITs，市场规模达1000亿</p>
-                </div>
-                <div class="application">
-                    <h4>🚀 Metakina成果</h4>
-                    <p>首个高速公路RWA项目，3天完成15亿融资</p>
+            <div class="rwa-highlight-box">
+                <h3>🚀 Metakina基础设施RWA生态</h3>
+                <div class="highlight-stats">
+                    <div class="highlight-item">
+                        <span class="highlight-number">550亿+</span>
+                        <span class="highlight-label">总资产规模</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-number">15个</span>
+                        <span class="highlight-label">在建项目</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-number">8.2%</span>
+                        <span class="highlight-label">平均年化收益</span>
+                    </div>
                 </div>
             </div>
-            <p class="quote">"用未来的钱，办今天的事" - 盘活存量资产新模式</p>
         </div>
 
-        <!-- Slide 18: 案例深潜：知识产权RWA -->
+        <!-- Slide 18: 知识产权RWA生态矩阵 -->
         <div class="slide">
-            <h2>案例深潜：华语音乐版权RWA创新项目</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <h4>项目详情 🎵</h4>
-                    <p>• 知名歌手新专辑版权<br>• 10年收益权<br>• 预期收益：5000万人民币</p>
+            <h2>知识产权RWA：构建数字经济新引擎</h2>
+            <div class="ip-rwa-matrix">
+                <div class="ip-category">
+                    <div class="ip-header">
+                        <span class="ip-icon">🎵</span>
+                        <h3>音乐版权</h3>
+                    </div>
+                    <div class="ip-projects">
+                        <div class="ip-project">
+                            <span class="project-name">周杰伦经典专辑</span>
+                            <span class="project-value">8.5亿元</span>
+                            <span class="project-yield">12.5%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">华语金曲合集</span>
+                            <span class="project-value">3.2亿元</span>
+                            <span class="project-yield">10.8%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">新生代歌手版权</span>
+                            <span class="project-value">1.8亿元</span>
+                            <span class="project-yield">15.2%</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="step">
-                    <h4>粉丝经济 💝</h4>
-                    <p>• 粉丝持有版权代币<br>• 享受流媒体分红<br>• 参与创作决策投票</p>
+                <div class="ip-category">
+                    <div class="ip-header">
+                        <span class="ip-icon">🎬</span>
+                        <h3>影视版权</h3>
+                    </div>
+                    <div class="ip-projects">
+                        <div class="ip-project">
+                            <span class="project-name">经典电影IP</span>
+                            <span class="project-value">12亿元</span>
+                            <span class="project-yield">9.5%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">热门剧集版权</span>
+                            <span class="project-value">6.8亿元</span>
+                            <span class="project-yield">11.2%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">动漫IP授权</span>
+                            <span class="project-value">4.5亿元</span>
+                            <span class="project-yield">13.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ip-category">
+                    <div class="ip-header">
+                        <span class="ip-icon">💡</span>
+                        <h3>专利技术</h3>
+                    </div>
+                    <div class="ip-projects">
+                        <div class="ip-project">
+                            <span class="project-name">5G通信专利包</span>
+                            <span class="project-value">25亿元</span>
+                            <span class="project-yield">8.8%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">AI算法专利</span>
+                            <span class="project-value">15亿元</span>
+                            <span class="project-yield">14.5%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">新能源技术</span>
+                            <span class="project-value">8.9亿元</span>
+                            <span class="project-yield">16.2%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ip-category">
+                    <div class="ip-header">
+                        <span class="ip-icon">🎮</span>
+                        <h3>游戏IP</h3>
+                    </div>
+                    <div class="ip-projects">
+                        <div class="ip-project">
+                            <span class="project-name">王者荣耀IP</span>
+                            <span class="project-value">50亿元</span>
+                            <span class="project-yield">7.5%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">独立游戏合集</span>
+                            <span class="project-value">2.8亿元</span>
+                            <span class="project-yield">18.5%</span>
+                        </div>
+                        <div class="ip-project">
+                            <span class="project-name">VR游戏版权</span>
+                            <span class="project-value">1.5亿元</span>
+                            <span class="project-yield">22.3%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="applications" style="margin-top: 30px;">
-                <div class="application">
-                    <h4>🔥 行业趋势</h4>
-                    <p>Spotify年付费用户2.3亿，版权收入增长12%</p>
+            <div class="ip-summary">
+                <div class="summary-stat">
+                    <span class="summary-number">136.5亿+</span>
+                    <span class="summary-label">IP资产总值</span>
                 </div>
-                <div class="application">
-                    <h4>🚀 Metakina创新</h4>
-                    <p>全球首个华语音乐RWA平台，已上线50+音乐人</p>
+                <div class="summary-stat">
+                    <span class="summary-number">12.8%</span>
+                    <span class="summary-label">平均年化收益</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="summary-number">85+</span>
+                    <span class="summary-label">IP项目数量</span>
                 </div>
             </div>
-            <p style="margin-top: 20px; color: #e74c3c; font-size: 1.3rem;">创作者提前获得资金，粉丝成为"共同持有人"</p>
         </div>
 
         <!-- Slide 19: Metakina -->
